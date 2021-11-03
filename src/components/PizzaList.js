@@ -1,11 +1,14 @@
 // src/components/PizzaList.js
 import { useSelector } from "react-redux";
 import { selectUser } from "../store/user/selectors";
-import { selectPizza, showPizzas } from "../store/pizzas/selectors";
+import { selectPizzas } from "../store/pizzas/selectors";
+// import { selectMostBoughtPizza } from "../store/pizzas/selectors";
 
 export default function PizzaList() {
   const user = useSelector(selectUser);
-  const pizzas = useSelector(selectPizza);
+  const pizzas = useSelector(selectPizzas);
+  // const most = useSelector(selectMostBoughtPizza);
+  // console.log("this is the most", most);
 
   console.log("this is my pizzas", pizzas);
 
@@ -25,7 +28,7 @@ export default function PizzaList() {
           <li key={pi.id}>
             <strong>{pi.name}</strong>
             <p> {pi.description}</p>
-            <p> {pi.image}</p>
+            <img src={pi.image} />
             <p>{pi.bought}</p>
           </li>
         ))}
